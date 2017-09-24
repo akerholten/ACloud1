@@ -49,8 +49,8 @@ type Contributer struct {
 func handlerGitURL(w http.ResponseWriter, r *http.Request){
 	http.Header.Add(w.Header(), "content-type", "application/json")
 	gitRepo := strings.Split(r.URL.Path, "/")
-	if len(gitRepo) >= 5 && strings.Compare(gitRepo[2], "github.com") == 0 {
-		url := "https://api." + gitRepo[2] + "/repos/" + gitRepo[3] + "/" + gitRepo[4]
+	if len(gitRepo) >= 6 && strings.Compare(gitRepo[3], "github.com") == 0 {
+		url := "https://api." + gitRepo[3] + "/repos/" + gitRepo[4] + "/" + gitRepo[5]
 
 		myClient := http.Client{ Timeout: time.Second * 2 }
 
@@ -92,7 +92,7 @@ func handlerGitURL(w http.ResponseWriter, r *http.Request){
 
 		processedData := ProcessedData{}
 
-		processedData.Project 	= gitRepo[2] + "/" + gitRepo[3] + "/" + gitRepo[4]
+		processedData.Project 	= gitRepo[3] + "/" + gitRepo[4] + "/" + gitRepo[5]
 		processedData.Owner 	= repoData.Owner.Login
 		processedData.Committer = contData.Login
 		processedData.Commits 	= contData.Contributions
@@ -180,6 +180,6 @@ func getLanguages (url string, myClient http.Client) []string {
 
 func main() {
 	port := os.Getenv("PORT")
-	http.HandleFunc("/giturl/", handlerGitURL)
+	http.HandleFunc("/projectinfo/v1/", handlerGitURL)
 	http.ListenAndServe(":" + port, nil)
 }
