@@ -173,5 +173,5 @@ func getLanguages (url string, myClient http.Client) []string {
 
 func main() {
 	http.HandleFunc("/giturl/", handlerGitURL)
-	http.ListenAndServe("serene-dusk-73851.herokuapp.com", nil)
+	http.ListenAndServe("https://serene-dusk-73851.herokuapp.com", nil)
 }
