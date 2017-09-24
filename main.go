@@ -92,7 +92,7 @@ func handlerGitURL(w http.ResponseWriter, r *http.Request){
 
 		processedData := ProcessedData{}
 
-		processedData.Project 	= gitRepo[3] + "/" + gitRepo[4] + "/" + gitRepo[5]
+		processedData.Project 	= repoData.Project
 		processedData.Owner 	= repoData.Owner.Login
 		processedData.Committer = contData.Login
 		processedData.Commits 	= contData.Contributions
