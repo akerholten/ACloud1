@@ -1,7 +1,11 @@
 // Nikolai Åkerholt, studentid:473184
 
 //Sources:
-//Test
+// https://blog.alexellis.io/golang-json-api-client/
+// https://blog.golang.org/json-and-go
+// https://stackoverflow.com/questions/11066946/partly-json-unmarshal-into-a-map-in-go
+// https://elithrar.github.io/article/testing-http-handlers-go/
+
 
 
 package main
@@ -145,7 +149,7 @@ func getLanguages (url string, myClient http.Client) []string {
 		log.Fatal(err)
 	}
 
-	req.Header.Set("User-Agent", "akerholten" )
+	req.Header.Set("User-Agent", "Github-GOLang" )
 
 
 	resp, err := myClient.Do(req)
