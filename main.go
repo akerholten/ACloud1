@@ -14,6 +14,7 @@ import (
 	"log"
 	"time"
 	"io/ioutil"
+	"os"
 )
 
 type RepoData struct {
@@ -174,6 +175,7 @@ func getLanguages (url string, myClient http.Client) []string {
 //Main
 
 func main() {
+	port := os.Getenv("PORT")
 	http.HandleFunc("/giturl/", handlerGitURL)
-	http.ListenAndServe("https://serene-dusk-73851.herokuapp.com", nil)
+	http.ListenAndServe(":" + port, nil)
 }
